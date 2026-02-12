@@ -27,9 +27,8 @@ The lab includes:
 - **Router:** connects LAN and Server network
 - **Switches:** provide L2 connectivity
 
-📌 **Topology image path:** `docs/topology.png`
 
-> Make sure you upload your topology screenshot as: `docs/topology.png`
+ ![Topology](docs/topology.png)
 
 ---
 
