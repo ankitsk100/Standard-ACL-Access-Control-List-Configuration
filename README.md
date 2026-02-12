@@ -1,15 +1,15 @@
-# 🔐 Standard Access Control List (ACL) – Cisco Lab
+# Standard Access Control List (ACL) – Cisco Lab
 
-## 📌 Project Overview
+## Project Overview
 This project demonstrates how to configure and apply a **Standard Access Control List (ACL)** on a Cisco router to control traffic based on the **source IP address**.
 
 In this lab:
-- ✅ Only two specific hosts are permitted
-- ❌ All other sources are denied
-- 🎯 ACL is applied inbound on the router interface connected to the LAN
+- Only two specific hosts are permitted
+- All other sources are denied
+- ACL is applied inbound on the router interface connected to the LAN
 
 ---
-## 🗺️ Topology
+## Topology
 The lab includes:
 - **LAN (Users):** `192.168.1.0/24` (IT + HR PCs)
 - **Server Network:** `10.10.10.0/24` (DHCP + Server)
@@ -21,7 +21,7 @@ The lab includes:
 
 ---
 
-## 🧠 What is a Standard ACL?
+## What is a Standard ACL?
 A **Standard ACL** filters packets using **only the source IPv4 address**.
 
 **Key points**
@@ -31,7 +31,7 @@ A **Standard ACL** filters packets using **only the source IPv4 address**.
 
 ---
 
-## 🎯 ACL Objective
+## ACL Objective
 Allow only:
 - `192.168.1.10`
 - `192.168.1.20`
@@ -40,7 +40,7 @@ Deny all other sources.
 
 ---
 
-## ⚙️ Configuration (Router)
+## Configuration (Router)
 ```bash
 enable
 configure terminal
@@ -58,7 +58,7 @@ write memory
 
 ---
 
-## 🔎 Verification
+## Verification
 ```bash
 show access-lists
 show ip interface gig0/0
@@ -66,7 +66,7 @@ show ip interface gig0/0
 
 ---
 
-## 🧹 Remove / Rollback
+## Remove / Rollback
 Remove ACL lines:
 ```bash
 no access-list 10
@@ -80,7 +80,7 @@ no ip access-group 10 in
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 ```
 standard-acl-lab/
 ├── README.md
@@ -95,13 +95,9 @@ standard-acl-lab/
 
 ---
 
-## 📚 Key Learning Outcomes
+## Key Learning Outcomes
 - Standard ACL behavior (source-based filtering)
 - Applying ACLs to interfaces using `ip access-group`
 - Verification using `show access-lists`
 - Safe rollback/removal
 
----
-
-## 👨‍💻 Author
-Ankit Kuttarmare
