@@ -1,0 +1,31 @@
+enable
+configure terminal
+
+hostname R1
+no ip domain-lookup
+
+interface gigabitEthernet0/0
+ description LAN 192.168.1.0/24
+ ip address 192.168.1.1 255.255.255.0
+ no shutdown
+exit
+
+interface gigabitEthernet0/1
+ description ServerNet 10.10.10.0/24
+ ip address 10.10.10.1 255.255.255.0
+ no shutdown
+exit
+
+access-list 10 permit host 192.168.1.10
+access-list 10 permit host 192.168.1.20
+access-list 10 deny any
+
+interface gigabitEthernet0/0
+ ip access-group 10 in
+exit
+
+end
+write memory
+
+show access-lists
+show ip interface gigabitEthernet0/0
