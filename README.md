@@ -9,17 +9,6 @@ In this lab:
 - 🎯 ACL is applied inbound on the router interface connected to the LAN
 
 ---
-
-## 🧠 What is a Standard ACL?
-A **Standard ACL** filters packets using **only the source IPv4 address**.
-
-**Key points**
-- Standard ACL number range: **1–99** (and 1300–1999)
-- Cannot match destination IP, protocol, or ports
-- Best practice: place Standard ACLs **close to the destination** (because they are broad)
-
----
-
 ## 🗺️ Topology
 The lab includes:
 - **LAN (Users):** `192.168.1.0/24` (IT + HR PCs)
@@ -29,6 +18,16 @@ The lab includes:
 
 
  ![Topology](docs/topology.png)
+
+---
+
+## 🧠 What is a Standard ACL?
+A **Standard ACL** filters packets using **only the source IPv4 address**.
+
+**Key points**
+- Standard ACL number range: **1–99** (and 1300–1999)
+- Cannot match destination IP, protocol, or ports
+- Best practice: place Standard ACLs **close to the destination** (because they are broad)
 
 ---
 
