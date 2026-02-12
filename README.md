@@ -1,51 +1,48 @@
 # 🔐 Standard Access Control List (ACL) – Cisco Lab
 
 ## 📌 Project Overview
+This project demonstrates how to configure and apply a **Standard Access Control List (ACL)** on a Cisco router to control traffic based on the **source IP address**.
 
-This project demonstrates the configuration and implementation of a **Standard Access Control List (ACL)** on a Cisco Router.
-
-The ACL is configured to:
-- ✅ Permit only specific hosts from the IT department
-- ❌ Deny all other traffic
-- 🎯 Apply filtering on inbound traffic
-
-This lab was implemented using Cisco Packet Tracer.
+In this lab:
+- ✅ Only two specific hosts are permitted
+- ❌ All other sources are denied
+- 🎯 ACL is applied inbound on the router interface connected to the LAN
 
 ---
 
 ## 🧠 What is a Standard ACL?
+A **Standard ACL** filters packets using **only the source IPv4 address**.
 
-A **Standard Access Control List** filters traffic based only on the **source IP address**.
-
-- Uses ACL numbers: **1–99**
-- Does NOT filter by destination IP or port
-- Best practice: Place it **close to the destination**
+**Key points**
+- Standard ACL number range: **1–99** (and 1300–1999)
+- Cannot match destination IP, protocol, or ports
+- Best practice: place Standard ACLs **close to the destination** (because they are broad)
 
 ---
 
-## 🏗️ Network Topology
+## 🗺️ Topology
+The lab includes:
+- **LAN (Users):** `192.168.1.0/24` (IT + HR PCs)
+- **Server Network:** `10.10.10.0/24` (DHCP + Server)
+- **Router:** connects LAN and Server network
+- **Switches:** provide L2 connectivity
 
-- IT Department: `192.168.1.0/24`
-- Server Network: `10.10.10.0/24`
-- Router connects both networks
-- ACL applied inbound on `GigabitEthernet0/0`
+📌 **Topology image path:** `docs/topology.png`
 
-📎 See topology diagram inside `/docs/topology.png`
+> Make sure you upload your topology screenshot as: `docs/topology.png`
 
 ---
 
 ## 🎯 ACL Objective
-
 Allow only:
 - `192.168.1.10`
 - `192.168.1.20`
 
-Deny all other hosts from accessing the network.
+Deny all other sources.
 
 ---
 
-## ⚙️ Router Configuration
-
+## ⚙️ Configuration (Router)
 ```bash
 enable
 configure terminal
@@ -63,8 +60,7 @@ write memory
 
 ---
 
-## 🔎 Verification Commands
-
+## 🔎 Verification
 ```bash
 show access-lists
 show ip interface gig0/0
@@ -72,14 +68,13 @@ show ip interface gig0/0
 
 ---
 
-## 🧹 How to Remove the ACL
-
+## 🧹 Remove / Rollback
+Remove ACL lines:
 ```bash
 no access-list 10
 ```
 
-If applied on interface:
-
+If you also want to remove it from the interface:
 ```bash
 interface gig0/0
 no ip access-group 10 in
@@ -87,17 +82,28 @@ no ip access-group 10 in
 
 ---
 
-## 📚 Key Learning Outcomes
+## 📁 Repository Structure
+```
+standard-acl-lab/
+├── README.md
+├── docs/
+│   └── topology.png
+├── configs/
+│   └── router/
+│       └── R1-standard-acl.txt
+└── packet-tracer/
+    └── Standard-ACL-Lab.pkt
+```
 
-- Understanding Standard ACL logic
-- Source-based traffic filtering
-- Interface-based ACL application
-- Verification and removal process
+---
+
+## 📚 Key Learning Outcomes
+- Standard ACL behavior (source-based filtering)
+- Applying ACLs to interfaces using `ip access-group`
+- Verification using `show access-lists`
+- Safe rollback/removal
 
 ---
 
 ## 👨‍💻 Author
-
-Ankit Kuttarmare  
-Master’s in Computer Science  
-Networking & Security Projects
+Ankit Kuttarmare
